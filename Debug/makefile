@@ -44,7 +44,7 @@ all: Vermillion
 Vermillion: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross G++ Linker'
-	g++ -L"C:\Users\Riley\Desktop\archives\libraries\SFML-2.0\lib" -mwindows -o "Vermillion" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -L"C:\Users\Riley\Desktop\C++\Vermillion\lib" -mwindows -o "Vermillion" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
