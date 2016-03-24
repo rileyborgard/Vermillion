@@ -1,4 +1,5 @@
 
+#include <MainScreen.h>
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Clock.hpp>
@@ -7,11 +8,13 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/VideoMode.hpp>
 #include <SFML/Window/WindowStyle.hpp>
-#include <MainScreen.h>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
 int main() {
+	std::srand(std::time(NULL));
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Vermillion", sf::Style::Close);
 	window.setVerticalSyncEnabled(true);
 	MainScreen screen;

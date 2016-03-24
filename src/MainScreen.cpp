@@ -6,18 +6,29 @@
  */
 
 #include <MainScreen.h>
-#include <SFML/Graphics/Color.hpp>
-#include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/System/Vector2.hpp>
-#include <SFML/Window/Event.hpp>
+#include <SFML/Window/Mouse.hpp>
+#include <cmath>
 
 void MainScreen::restart(sf::RenderWindow &window) {
-	rect.setFillColor(sf::Color::Red);
-	rect.setPosition(50, 50);
-	rect.setSize(sf::Vector2f(32, 32));
+	tileset.loadFromFile("tileset.png");
+	map = new TileMap(tileset, 100, 100, 16, 32);
 }
 void MainScreen::update(sf::RenderWindow &window, float delta) {
-	rect.move(delta*50, 0);
-	window.draw(rect);
+	window.draw(*map);
 }
-void MainScreen::event(sf::Event event) {}
+void MainScreen::event(sf::Event event) {
+	switch(event.type) {
+	case sf::Event::MouseMoved:
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Middle))
+			map->move(sf::Vector2f(event.mouseMove.x, event.mouseMove.y) - mousePosition);
+		mousePosition = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
+		break;
+	case sf::Event::MouseWheelMoved:
+		float scale = std::pow(1.1, event.mouseWheel.delta);
+		if(map->getScale().x * scale > 10 || map->getScale().y * scale < 0.1)
+			scale = 1;
+		map->scale(scale, scale);
+		map->setPosition(mousePosition + scale * (map->getPosition() - mousePosition));
+		break;
+	}
+}

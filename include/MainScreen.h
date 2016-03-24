@@ -8,8 +8,10 @@
 #ifndef MAINSCREEN_H_
 #define MAINSCREEN_H_
 
-#include <Screen.h>
-#include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Event.hpp>
+#include <TileMap.h>
 
 class MainScreen {
 public:
@@ -17,7 +19,9 @@ public:
 	void update(sf::RenderWindow &window, float delta);
 	void event(sf::Event event);
 private:
-	sf::RectangleShape rect;
+	TileMap *map;
+	sf::Texture tileset;
+	sf::Vector2f mousePosition;
 };
 
 #endif /* MAINSCREEN_H_ */
