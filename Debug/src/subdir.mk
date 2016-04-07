@@ -4,21 +4,24 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Class.cpp \
 ../src/MainScreen.cpp \
-../src/Tile.cpp \
-../src/TileMap.cpp \
+../src/Map.cpp \
+../src/Unit.cpp \
 ../src/main.cpp 
 
 OBJS += \
+./src/Class.o \
 ./src/MainScreen.o \
-./src/Tile.o \
-./src/TileMap.o \
+./src/Map.o \
+./src/Unit.o \
 ./src/main.o 
 
 CPP_DEPS += \
+./src/Class.d \
 ./src/MainScreen.d \
-./src/Tile.d \
-./src/TileMap.d \
+./src/Map.d \
+./src/Unit.d \
 ./src/main.d 
 
 

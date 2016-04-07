@@ -8,19 +8,17 @@
 #ifndef MAINSCREEN_H_
 #define MAINSCREEN_H_
 
-#include <SFML/Graphics/Texture.hpp>
+#include <Map.h>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
-#include <TileMap.h>
 
 class MainScreen {
 public:
 	void restart(sf::RenderWindow &window);
 	void update(sf::RenderWindow &window, float delta);
-	void event(sf::Event event);
+	void event(sf::RenderWindow &window, sf::Event event);
 private:
-	TileMap *map;
-	sf::Texture tileset;
+	Map *map;
 	sf::Vector2f mousePosition;
 };
 

@@ -11,11 +11,11 @@
 #include <cstdlib>
 #include <ctime>
 
-using namespace std;
-
 int main() {
 	std::srand(std::time(NULL));
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Vermillion", sf::Style::Close);
+	sf::ContextSettings settings;
+	settings.antialiasingLevel = 4;
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Vermillion", sf::Style::Close, settings);
 	window.setVerticalSyncEnabled(true);
 	MainScreen screen;
 	screen.restart(window);
@@ -31,9 +31,11 @@ int main() {
 			case sf::Event::KeyPressed:
 				if(event.key.code == sf::Keyboard::Escape)
 					window.close();
+				else
+					screen.event(window, event);
 				break;
 			default:
-				screen.event(event);
+				screen.event(window, event);
 				break;
 			}
 		}
