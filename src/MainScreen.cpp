@@ -16,6 +16,8 @@ void MainScreen::restart(sf::RenderWindow &window) {
 	map->setPosition(0.5f * sf::Vector2f(window.getSize()));
 }
 void MainScreen::update(sf::RenderWindow &window, float delta) {
+	map->click(sf::Vector2f(sf::Mouse::getPosition(window)));
+	map->update(window, delta);
 	window.draw(*map);
 }
 void MainScreen::event(sf::RenderWindow &window, sf::Event event) {
@@ -25,6 +27,9 @@ void MainScreen::event(sf::RenderWindow &window, sf::Event event) {
 			map->setScale(1, 1);
 			map->setPosition(0.5f * sf::Vector2f(window.getSize()));
 		}
+		break;
+	case sf::Event::MouseButtonPressed:
+
 		break;
 	case sf::Event::MouseMoved:
 		if(sf::Mouse::isButtonPressed(sf::Mouse::Middle))

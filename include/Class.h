@@ -13,7 +13,7 @@
 class Class {
 public:
 	Class();
-	int str, skill, dex, speed, def, arm, hp;
+	int id, str, skill, dex, speed, def, arm, hp;
 	sf::Color color;
 	static const Class Barbarian;
 	static const Class Technist;
@@ -21,7 +21,9 @@ public:
 	static const Class Rogue;
 	static const Class Knight;
 private:
-	Class(int str, int skill, int dex, int speed, int def, int arm, int hp, sf::Color color);
+	Class(int id, int str, int skill, int dex,
+			int speed, int def, int arm, int hp,
+			sf::Color color);
 };
 
 #endif /* CLASS_H_ */
